@@ -133,16 +133,16 @@ namespace HW1
             if (choice == 1)
             {
                 result = (temperature - 32) * 5 / 9;
-                Console.WriteLine($"{temperature}°F = {result}°C");
+                Console.WriteLine(temperature + " F = "+ result + " C");
             }
             else if (choice == 2)
             {
                 result = temperature * 9 / 5 + 32;
-                Console.WriteLine($"{temperature}°C = {result}°F");
+                Console.WriteLine(temperature + " F = " + result + " C";
             }
             else
             {
-                Console.WriteLine("Неверный выбор.");
+                Console.WriteLine("Wrong choice!");
             }
         }
         static void Task7()
