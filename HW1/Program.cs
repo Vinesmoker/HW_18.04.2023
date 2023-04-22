@@ -121,6 +121,50 @@ namespace HW1
             string week = date.DayOfWeek.ToString();
             Console.WriteLine(season + " " + week);
         }
+        static void Task6() 
+        {
+            Console.WriteLine("Enter a temperature:");
+            double temperature = double.Parse(Console.ReadLine());
+            Console.WriteLine("Make a chice:");
+            Console.WriteLine("1 - Convert from fahrenheit to celsius");
+            Console.WriteLine("2 - Convert from celsius to fahrenheit");
+            int choice = int.Parse(Console.ReadLine());
+            double result;
+            if (choice == 1)
+            {
+                result = (temperature - 32) * 5 / 9;
+                Console.WriteLine($"{temperature}°F = {result}°C");
+            }
+            else if (choice == 2)
+            {
+                result = temperature * 9 / 5 + 32;
+                Console.WriteLine($"{temperature}°C = {result}°F");
+            }
+            else
+            {
+                Console.WriteLine("Неверный выбор.");
+            }
+        }
+        static void Task7()
+        {
+            Console.Write("Введите начало диапазона: ");
+            int start = int.Parse(Console.ReadLine());
+            Console.Write("Введите конец диапазона: ");
+            int end = int.Parse(Console.ReadLine());
+            if (start > end)
+            {
+                int temp = start;
+                start = end;
+                end = temp;
+            }
+            for (int i = start; i <= end; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    Console.WriteLine(i);
+                }
+            }
+        }
         static void Main(string[] args)
         {
             //////////////TASK 1////////////////
@@ -153,6 +197,12 @@ namespace HW1
             Console.WriteLine("Enter a date in the format DD.MM.YYYY");
             string input = Console.ReadLine();
             Task5(input);
+
+            //////////////TASK 6////////////////
+            Program.Task6();
+
+            //////////////TASK 7////////////////
+            Program.Task7();
         }
     }
 }
