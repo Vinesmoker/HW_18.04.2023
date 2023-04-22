@@ -88,6 +88,39 @@ namespace HW1
                 return res;
             }*/
         }
+        static void Task5(string input)
+        {
+            DateTime date;
+            if (!DateTime.TryParse(input, out date))
+            {
+                Console.WriteLine("Error! Wrong date format! Enter the date in the format DD.MM.YYYY!");
+                return;
+            }
+            string season;
+            if (date.Month == 3 || date.Month == 4 || date.Month == 5)
+            {
+                season = "Spring";
+            }
+            else if (date.Month == 6 || date.Month == 7 || date.Month == 8)
+            {
+                season = "Summer";
+            }
+            else if (date.Month == 9 || date.Month == 10 || date.Month == 11)
+            {
+                season = "Autumn";
+            }
+            else if (date.Month == 12 || date.Month == 1 || date.Month == 2)
+            {
+                season = "Winter";
+            }
+            else
+            {
+                Console.WriteLine("Error! Invalid month value!");
+                return;
+            }
+            string week = date.DayOfWeek.ToString();
+            Console.WriteLine(season + " " + week);
+        }
         static void Main(string[] args)
         {
             //////////////TASK 1////////////////
@@ -117,7 +150,9 @@ namespace HW1
             Console.WriteLine("Result: " + result);
 
             //////////////TASK 5////////////////
-            
+            Console.WriteLine("Enter a date in the format DD.MM.YYYY");
+            string input = Console.ReadLine();
+            Task5(input);
         }
     }
 }
