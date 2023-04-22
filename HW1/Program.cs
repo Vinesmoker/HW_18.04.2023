@@ -147,9 +147,9 @@ namespace HW1
         }
         static void Task7()
         {
-            Console.Write("Введите начало диапазона: ");
+            Console.Write("Enter the begin of the range: ");
             int start = int.Parse(Console.ReadLine());
-            Console.Write("Введите конец диапазона: ");
+            Console.Write("Enter the end of the range: ");
             int end = int.Parse(Console.ReadLine());
             if (start > end)
             {
