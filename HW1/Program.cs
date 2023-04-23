@@ -138,7 +138,7 @@ namespace HW1
             else if (choice == 2)
             {
                 result = temperature * 9 / 5 + 32;
-                Console.WriteLine(temperature + " F = " + result + " C";
+                Console.WriteLine(temperature + " F = " + result + " C");
             }
             else
             {
