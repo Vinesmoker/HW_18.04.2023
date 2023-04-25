@@ -39,6 +39,9 @@ namespace HW1
                 case "7":
                     Task7();
                     break;
+                default:
+                    Console.WriteLine("Good day!");
+                    break;
             }
         }
         static void Task1() 
@@ -226,6 +229,16 @@ namespace HW1
         static void Main(string[] args)
         {
             Choice();
+            Console.WriteLine("To select another task, press Y. To quit, press any other key!");
+            string input = Console.ReadLine().ToUpper();
+            if (input == "Y")
+            {
+                Main(args);
+            }
+            else 
+            {
+                Console.WriteLine("Good day!");
+            }
         }
     }
 }
