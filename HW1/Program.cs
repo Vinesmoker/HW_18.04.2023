@@ -7,6 +7,7 @@ namespace HW1
     {
         static void Choice() 
         {
+            M1:
             Console.WriteLine("Select a task!\n" +
                 "1. A range.\n" +
                 "2. Percent.\n" +
@@ -40,8 +41,8 @@ namespace HW1
                     Task7();
                     break;
                 default:
-                    Console.WriteLine("Good day!");
-                    break;
+                    Console.WriteLine("Incorrect input! Try again!");
+                    goto M1;
             }
         }
         static void Task1() 
