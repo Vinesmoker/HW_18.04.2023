@@ -5,40 +5,86 @@ namespace HW1
 {
     internal class Program
     {
-        static string Task1(int num) 
+        static void Choice() 
         {
+            Console.WriteLine("Select a task!\n" +
+                "1. A range.\n" +
+                "2. Percent.\n" +
+                "3. A string of numbers.\n" +
+                "4. A shift.\n" +
+                "5. A date.\n" +
+                "6. A temperature.\n" +
+                "7. Even numbers.\n" +
+                "Your choice?: ");
+            switch (Console.ReadLine())
+            {
+                case "1":
+                    Task1();
+                    break;
+                case "2":
+                    Task2();
+                    break;
+                case "3":
+                    Task3();
+                    break;
+                case "4":
+                    Task4();
+                    break;
+                case "5":
+                    Task5();
+                    break;
+                case "6":
+                    Task6();
+                    break;
+                case "7":
+                    Task7();
+                    break;
+            }
+        }
+        static void Task1() 
+        {
+            M1:
+            Console.WriteLine("Enter a integer number between 1 and 100 inclusive: ");
+            int num = int.Parse(Console.ReadLine());
             if (num < 1 || num > 100)
             {
-                return("Error! The integer number must be between 1 and 100 inclusive!");
+                Console.WriteLine("Error! The integer number must be between 1 and 100 inclusive! Try again!");
+                goto M1;
             }
             else if ((num % 3) == 0)
             {
-                return("Fizz");
+                Console.WriteLine("Fizz");
             }
             else if ((num % 5) == 0)
             {
-                return ("Buzz");
+                Console.WriteLine("Buzz");
             }
             else if ((num % 3) == 0 && (num % 5) == 0)
             {
-                return ("Fizz Buzz");
+                Console.WriteLine("Fizz Buzz");
             }
             else
             {
-                return num.ToString();
+                Console.WriteLine(num.ToString());
             }
         }
-        static double Task2(int num2, int perc)
+        static void Task2()
         {
+            M1:
+            Console.WriteLine("Enter a number: ");
+            int num2 = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter percent");
+            int perc = int.Parse(Console.ReadLine());
+            double res = (num2 * (double)perc) / 100;
             if (perc < 1 || perc > 100)
             {
-                Console.WriteLine("Error!");
-                return 0;
+                Console.WriteLine("Error! percent must be >=1 and <=100! Try again!");
+                goto M1;
             }
             else
-                return (num2 * (double)perc) / 100;
+                Console.WriteLine(perc + "% of " + num2 + " = " + res);
         }
-        static int Task3()
+        static void Task3()
         {
             Console.WriteLine("Enter digits separated by space:");
             string input = Console.ReadLine();
@@ -48,19 +94,26 @@ namespace HW1
             {
                 res = res * 10 + int.Parse(number);
             }
-            return res;
+            Console.WriteLine("The generated number is: " + res);
         }
-        static int Task4(int num4, int position1, int position2) 
+        static void Task4() 
         {
+            M1:
+            Console.WriteLine("Enter a six-digit number:");
+            int num4 = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter the positions of the digits to swap:");
+            int position1 = int.Parse(Console.ReadLine());
+            int position2 = int.Parse(Console.ReadLine());
+            
             if (num4 < 100000 || num4 > 999999)
             {
-                Console.WriteLine("Error! The number must be six digits!");
-                return num4;
+                Console.WriteLine("Error! The number must be six digits! Try again!"); 
+                goto M1;
             }
             else if (position1 < 1 || position1 > 6 || position2 < 1 || position2 > 6)
             {
-                Console.WriteLine("Error! The number must be between 1 and 2 inclusive");
-                return num4;
+                Console.WriteLine("Error! The number must be between 1 and 6 inclusive! Try again!");
+                goto M1;
             }
             string numStr = num4.ToString();
             char[] charArr = numStr.ToCharArray();
@@ -68,7 +121,7 @@ namespace HW1
             charArr[position1 - 1] = charArr[position2 - 1];
             charArr[position2 - 1] = temp;
             int res = Convert.ToInt32(new string(charArr));
-            return res;
+            Console.WriteLine("Result: " + res);
             /*else
             {
                 int[] numbers = new int[6];
@@ -85,16 +138,19 @@ namespace HW1
                 {
                     res = res * 10 + numbers[i];
                 }
-                return res;
+                Console.WriteLine(res);
             }*/
         }
-        static void Task5(string input)
+        static void Task5()
         {
+            M1:
+            Console.WriteLine("Enter a date in the format DD.MM.YYYY");
+            string input = Console.ReadLine();
             DateTime date;
             if (!DateTime.TryParse(input, out date))
             {
-                Console.WriteLine("Error! Wrong date format! Enter the date in the format DD.MM.YYYY!");
-                return;
+                Console.WriteLine("Error! Wrong date format! Enter the date in the format DD.MM.YYYY! Try again!");
+                goto M1;
             }
             string season;
             if (date.Month == 3 || date.Month == 4 || date.Month == 5)
@@ -116,13 +172,14 @@ namespace HW1
             else
             {
                 Console.WriteLine("Error! Invalid month value!");
-                return;
+                goto M1;
             }
             string week = date.DayOfWeek.ToString();
             Console.WriteLine(season + " " + week);
         }
         static void Task6() 
         {
+            M1:
             Console.WriteLine("Enter a temperature:");
             double temperature = double.Parse(Console.ReadLine());
             Console.WriteLine("Make a chice:");
@@ -142,7 +199,8 @@ namespace HW1
             }
             else
             {
-                Console.WriteLine("Wrong choice!");
+                Console.WriteLine("Wrong choice! Try again!");
+                goto M1;
             }
         }
         static void Task7()
@@ -167,45 +225,7 @@ namespace HW1
         }
         static void Main(string[] args)
         {
-            //////////////TASK 1////////////////
-            Console.WriteLine("Enter a integer number between 1 and 100 inclusive: ");
-            int num = int.Parse(Console.ReadLine());
-            Program.Task1(num);
-
-            //////////////TASK 2////////////////
-            Console.WriteLine("Enter a number: ");
-            int num2 = int.Parse(Console.ReadLine());
-            Console.WriteLine("Enter percent");
-            int perc = int.Parse(Console.ReadLine());
-            double res = Task2(num2, perc);
-            Console.WriteLine(perc + "% of " + num2 + " = " + res);
-
-            //////////////TASK 3////////////////
-            int num3 = Task3();
-            Console.WriteLine("The generated number is: " + num3);
-
-            //////////////TASK 4////////////////
-            Console.WriteLine("Enter a six-digit number:");
-            int num4 = int.Parse(Console.ReadLine());
-            Console.WriteLine("Enter the positions of the digits to swap:");
-            int position1 = int.Parse(Console.ReadLine());
-            int position2 = int.Parse(Console.ReadLine());
-            int result = Task4(num4, position1, position2);
-            Console.WriteLine("Result: " + result);
-
-            //////////////TASK 5////////////////
-            Console.WriteLine("Enter a date in the format DD.MM.YYYY");
-            string input = Console.ReadLine();
-            Task5(input);
-
-            //////////////TASK 6////////////////
-            Program.Task6();
-
-            //////////////TASK 7////////////////
-            Program.Task7();
+            Choice();
         }
     }
 }
-//Console.WriteLine("Try again?\n Press Y to continue or any key to stop: ");
-//string answer = Console.ReadLine();
-//if (answer == "y" || answer == "Y")Program.Main(args);
