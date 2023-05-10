@@ -8,69 +8,76 @@ namespace HW2
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static void PrintArr1(int[] Arr1) 
         {
-            int[] A = new int[5];
-            double[,] B = new double[3, 4];
-            int maxA = A[0];
-            int minA = A[0];
-            double maxB = B[0, 0];
-            double minB = B[0, 0];
-            Random rand = new Random();
-            for (int i = 0; i < A.Length; i++) 
+            for (int i = 0; i < Arr1.Length; i++)
             {
-                A[i] = int.Parse(Console.ReadLine());
+                Console.Write(Arr1[i] + "\t");
             }
-            for (int i = 0;i < B.GetLength(0); i++) 
+        }
+        static void PrintArr2(double[,] Arr2) 
+        {
+            for(int i = 0; i < Arr2.GetLength(0); i++) 
             {
-                for (int j = 0; j < B.GetLength(1); j++) 
+                for(int j = 0; j < Arr2.GetLength(1); j++) 
                 {
-                    B[i, j] = rand.Next(-100, 100);
-                }
-            }
-            for (int i = 0; i < A.Length; i++)
-            {
-                Console.Write(A[i] + "\t");
-            }
-            Console.WriteLine("\n");
-            for (int i = 0; i < B.GetLength(0); i++)
-            {
-                for (int j = 0; j < B.GetLength(1); j++) 
-                {
-                    Console.Write(B[i, j] + "\t");
+                    Console.Write(Arr2[i, j] + "\t");
                 }
                 Console.WriteLine("\n");
             }
-            for (int i = 0; i < A.Length; i++)
+        }
+        static void Main(string[] args)
+        {
+            int[] Arr1 = new int[5];
+            double[,] Arr2 = new double[3, 4];
+            Random rand = new Random();
+            for (int i = 0; i < Arr1.Length; i++) 
             {
-                if (A[i] > maxA)
+                Arr1[i] = int.Parse(Console.ReadLine());
+            }
+            for (int i = 0;i < Arr2.GetLength(0); i++) 
+            {
+                for (int j = 0; j < Arr2.GetLength(1); j++) 
                 {
-                    maxA = A[i];
-                }
-                if (A[i] < minA)
-                {
-                    minA = A[i];
+                    Arr2[i, j] = rand.Next(-100, 100);
                 }
             }
-            for (int i = 0; i < B.GetLength(0); i++)
+            PrintArr1(Arr1);
+            Console.WriteLine("\n");
+            PrintArr2(Arr2);
+            int maxArr1 = Arr1[0];
+            int minArr1 = Arr1[0];
+            double maxArr2 = Arr2[0, 0];
+            double minArr2 = Arr2[0, 0];
+            for (int i = 0; i < Arr1.Length; i++)
             {
-                for (int j = 0; j < B.GetLength(1); j++)
+                if (Arr1[i] < minArr1)
                 {
-                    if (B[i, j] > maxB)
+                    minArr1 = Arr1[i];
+                }
+                if (Arr1[i] > maxArr1)
+                {
+                    maxArr1 = Arr1[i];
+                }
+            }
+            for (int i = 0; i < Arr2.GetLength(0); i++)
+            {
+                for (int j = 0; j < Arr2.GetLength(1); j++)
+                {
+                    if (Arr2[i, j] < minArr2)
                     {
-                        maxB = B[i, j];
+                        minArr2 = Arr2[i, j];
                     }
-                    if (B[i, j] < minB)
+                    if (Arr2[i, j] > maxArr2)
                     {
-                        minB = B[i, j];
+                        maxArr2 = Arr2[i, j];
                     }
                 }
             }
-            Console.WriteLine("Максимальное значение в массиве A: " + maxA);
-            Console.WriteLine("Минимальное значение в массиве A: " + minA);
-            Console.WriteLine("Максимальное значение в массиве B: " + maxB);
-            Console.WriteLine("Минимальное значение в массиве B: " + minB);
-
+            Console.WriteLine("Min value in the array Arr2 is: " + minArr1);
+            Console.WriteLine("Max value in the array Arr1 is: " + maxArr1);
+            Console.WriteLine("Min value in the array Arr2 is: " + minArr2);
+            Console.WriteLine("Max value in the array Arr2 is: " + maxArr2);
         }
     }
 }
