@@ -52,7 +52,8 @@ namespace HW1
             int num = int.Parse(Console.ReadLine());
             if (num < 1 || num > 100)
             {
-                Console.WriteLine("Error! The integer number must be between 1 and 100 inclusive! Try again!");
+                Console.WriteLine("Error! The integer number must be between 1 and " +
+                    "100 inclusive! Try again!");
                 goto M1;
             }
             else if ((num % 3) == 0)
@@ -116,7 +117,8 @@ namespace HW1
             }
             else if (position1 < 1 || position1 > 6 || position2 < 1 || position2 > 6)
             {
-                Console.WriteLine("Error! The number must be between 1 and 6 inclusive! Try again!");
+                Console.WriteLine("Error! The number must be between 1 and 6 inclusive!" +
+                    " Try again!");
                 goto M1;
             }
             string numStr = num4.ToString();
@@ -153,7 +155,8 @@ namespace HW1
             DateTime date;
             if (!DateTime.TryParse(input, out date))
             {
-                Console.WriteLine("Error! Wrong date format! Enter the date in the format DD.MM.YYYY! Try again!");
+                Console.WriteLine("Error! Wrong date format! Enter the date" +
+                    " in the format DD.MM.YYYY! Try again!");
                 goto M1;
             }
             string season;
@@ -183,13 +186,28 @@ namespace HW1
         }
         static void Task6() 
         {
-            M1:
-            Console.WriteLine("Enter a temperature:");
-            double temperature = double.Parse(Console.ReadLine());
-            Console.WriteLine("Make a chice:");
+            double temperature = 0;
+            int choice = 0;
+            bool wrightInput = false;
+
+            while (!wrightInput) 
+            {
+                Console.WriteLine("Enter a temperature:");
+                if (double.TryParse(Console.ReadLine(), out temperature))
+                {
+                    wrightInput = true;
+                }
+                else 
+                {
+                    Console.WriteLine("Wrong input! Please enter the right temperature!");
+                }
+            }
+            
+            temperature = double.Parse(Console.ReadLine());
+            Console.WriteLine("Make a choice:");
             Console.WriteLine("1 - Convert from fahrenheit to celsius");
             Console.WriteLine("2 - Convert from celsius to fahrenheit");
-            int choice = int.Parse(Console.ReadLine());
+            choice = int.Parse(Console.ReadLine());
             double result;
             if (choice == 1)
             {
@@ -204,7 +222,6 @@ namespace HW1
             else
             {
                 Console.WriteLine("Wrong choice! Try again!");
-                goto M1;
             }
         }
         static void Task7()
