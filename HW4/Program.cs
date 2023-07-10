@@ -6,7 +6,7 @@ internal class Program
     static char[,] board = new char[arrBoard, arrBoard];
     static int startPosRow = 0;
     static int startPosCol = 2;
-    static bool WrightMove(int endPosRow, int endPosCol)
+    static bool CorrectMove(int endPosRow, int endPosCol)
     {
         int row = Math.Abs(endPosRow - startPosRow);
         int col = Math.Abs(endPosCol - startPosCol);
@@ -50,7 +50,7 @@ internal class Program
             }
             int endPosCol = move[0] - 'A';
             int endPosRow = arrBoard - int.Parse(move[1].ToString());
-            if (WrightMove(endPosRow, endPosCol))
+            if (CorrectMove(endPosRow, endPosCol))
             {
                 if (startPosRow % 2 == 0 && startPosCol % 2 == 0)
                 {
